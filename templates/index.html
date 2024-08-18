@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <style>
+        body {
+            {% if background_image %}
+            background-image: url('{{ url_for('static', filename='images/' + background_image) }}');
+            {% endif %}
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -27,11 +34,50 @@
                 <p>Humidity: {{ weather.main.humidity }}%</p>
                 <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
             </div>
+        {% elif weather is defined %}
+            <p>{{ weather.message }}</p>
         {% endif %}
     </div>
+
+    <!-- Date and Time Display -->
+    <div id="datetime" class="datetime">
+        <!-- Date and time will be displayed here -->
+    </div>
+
+    <!-- JavaScript to update date and time -->
+    <script>
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            };
+            const dateTimeString = now.toLocaleDateString('en-US', options);
+            document.getElementById('datetime').innerText = dateTimeString;
+        }
+        
+        // Update date and time every second
+        setInterval(updateDateTime, 1000);
+
+        // Initial call to display date and time immediately
+        updateDateTime();
+    </script>
+
+
+
+    <!-- Note at the bottom-right corner -->
+    <div class="credit">
+        Design and developed by Manoj Ghosh
+    </div>
+
+
 
     <footer>
         &copy; 2024 Weather App. All rights reserved.
     </footer>
+
+    
+
+
 </body>
 </html>

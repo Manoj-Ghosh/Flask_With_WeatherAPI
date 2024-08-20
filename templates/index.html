@@ -26,7 +26,7 @@
             <button type="submit">Get Weather</button>
         </form>
         
-        {% if weather %}
+        {% if var == True %}
             <div class="weather-info">
                 <h2>Weather in {{ weather.name }}</h2>
                 <p>Temperature: {{ weather.main.temp }}°C</p>
@@ -34,8 +34,10 @@
                 <p>Humidity: {{ weather.main.humidity }}%</p>
                 <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
             </div>
-        {% elif weather is defined %}
-            <p>{{ weather.message }}</p>
+        {% elif var == 0 %}
+            <div class="weather-info">
+                <p>Error : {{ weather.message }}</p>
+            </div>
         {% endif %}
     </div>
 

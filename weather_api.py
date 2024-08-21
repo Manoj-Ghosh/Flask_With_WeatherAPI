@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-API_KEY = '85bb01ad3a213287e55a2d7156c2cc7b'
+API_KEY = 'Your APIs'
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
 @app.route('/', methods=['GET', 'POST'])
@@ -11,6 +11,7 @@ def index():
     weather = None
     var = False
     background_image = None
+    city = None
     if request.method == 'POST':
         city = request.form.get('city')
         if city:
@@ -37,7 +38,8 @@ def index():
                         'snow': 'snowy.jpg',
                         'storm': 'stormy.jpg',
                         'haze': 'haze.jpg',
-                        'mist':'mist.jpg'
+                        'mist':'mist.jpg',
+                        'thunderstorm': 'thunderstorm.jpg'
                     }
                background_image = background_map.get(weather_condition, 'default.jpg')  # default image if no match
             else:
@@ -46,7 +48,7 @@ def index():
                 
             
     
-    return render_template('index.html',var = var, weather=weather, background_image=background_image)
+    return render_template('index.html',var = var, weather=weather, background_image=background_image, city = city)
 
 if __name__ == '__main__':
     app.run(debug=True)

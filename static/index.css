@@ -104,6 +104,31 @@ button:hover {
     margin: 5px 0;
 }
 
+/* Error Message Styling */
+.error-message {
+    color: #D8000C; /* Red color for the text */
+    background-color: #FFBABA; /* Light red background */
+    border: 1px solid #D8000C; /* Red border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding for spacing */
+    margin: 15px 0; /* Space around the error message */
+    font-size: 16px; /* Font size */
+    font-family: Arial, sans-serif; /* Font family */
+    display: flex;
+    align-items: center; /* Vertically center the icon and text */
+}
+
+.error-message i {
+    font-size: 24px; /* Icon size */
+    margin-right: 10px; /* Space between icon and text */
+    color: #D8000C; /* Color of the icon */
+}
+
+.error-message strong {
+    font-weight: bold; /* Bold text for emphasis */
+}
+
+
 
 
 .weather-image {

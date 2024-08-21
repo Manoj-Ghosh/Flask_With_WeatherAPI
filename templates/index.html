@@ -18,11 +18,14 @@
         Weather App
     </header>
 
+    
+
+
     <div class="container">
-        <h1>Check the Weather</h1>
+        <h1>Check The Weather</h1>
         <form method="post">
-            <label for="city">Enter city:</label>
-            <input type="text" id="city" name="city" required>
+            <label for="city">Enter City:</label>
+            <input type="text" id="city" name="city" value = "{{ city }}" placeholder = "Enter city name" required>
             <button type="submit">Get Weather</button>
         </form>
         
@@ -35,7 +38,7 @@
                 <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
             </div>
         {% elif var == 0 %}
-            <div class="weather-info">
+            <div class="error-message">
                 <p>Error : {{ weather.message }}</p>
             </div>
         {% endif %}
